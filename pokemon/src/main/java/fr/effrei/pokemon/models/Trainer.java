@@ -1,8 +1,6 @@
 package fr.effrei.pokemon.models;
 
-
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -17,6 +15,9 @@ public class Trainer {
     @OneToMany
     private List<Pokemon> team;
 
+    private boolean isChamp;
+
+    // Getters et setters
     public String getId() {
         return id;
     }
@@ -39,5 +40,13 @@ public class Trainer {
 
     public void setTeam(List<Pokemon> team) {
         this.team = team;
+    }
+
+    public boolean isChampion() {
+        return isChamp;
+    }
+
+    public void setChampion(boolean champion) {
+        isChamp = champion;
     }
 }

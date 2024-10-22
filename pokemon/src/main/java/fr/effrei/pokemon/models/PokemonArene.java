@@ -1,10 +1,11 @@
 package fr.effrei.pokemon.models;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class PokemonLigue {
+public class PokemonArene {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -12,9 +13,13 @@ public class PokemonLigue {
 
     private String name;
 
-    @OneToMany
-    private List<Trainer> trainers;
+    @ManyToMany
+    private List<Trainer> trainers = new ArrayList<>();
 
+    @ManyToOne
+    private Trainer champion;
+
+    // Getters et setters
     public String getId() {
         return id;
     }
@@ -37,5 +42,13 @@ public class PokemonLigue {
 
     public void setTrainers(List<Trainer> trainers) {
         this.trainers = trainers;
+    }
+
+    public Trainer getChampion() {
+        return champion;
+    }
+
+    public void setChampion(Trainer champion) {
+        this.champion = champion;
     }
 }
